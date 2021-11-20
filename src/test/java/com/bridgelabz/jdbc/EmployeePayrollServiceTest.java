@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class EmployeePayrollServiceTest {
 
@@ -42,6 +43,22 @@ public class EmployeePayrollServiceTest {
     public void retrieveData_betweenRange() {
         EmployeePayrollService employeePayRollService=new EmployeePayrollService();
         employeePayRollService.retrieveData_inBetween_Range();
+    }
+
+    //Test Case To find Avg Basic pay
+    @Test
+    public void find_avg_BasicPay() {
+        EmployeePayrollService employeePayRollService=new EmployeePayrollService();
+        Map<String, Double> emp_Avg_salary = employeePayRollService.avg_BasePay_Base_on_gender();
+        System.out.println(emp_Avg_salary);
+    }
+
+    //Test Case To find Sum Of Basic pay
+    @Test
+    public void find_SumOf_basicPay() {
+        EmployeePayrollService employeePayRollService=new EmployeePayrollService();
+        Map<String, Double> emp_sum_salary = employeePayRollService.sumOf_BasicPay_Based_on_gender();
+        System.out.println(emp_sum_salary);
     }
 
 }

@@ -137,4 +137,28 @@ public class EmployeePayrollService {
         }
         return  empSumOf_salary;
     }
+
+    //Method To Add New Employee To Database
+    public void add_new_employee_to_the_Database(String name, String gender, double basic_pay, LocalDate startDate) {
+
+        String sql=String.format("insert into employee_payroll(name,gender,basic_pay,start)" + "values('%s','%s','%s','%s')", name,gender, basic_pay, Date.valueOf( startDate));
+        try {
+            Statement statement=connection.createStatement();
+            int rowAffected=statement.executeUpdate(sql,statement.RETURN_GENERATED_KEYS);
+            int empId=-1;
+            if(rowAffected == 1) {
+                ResultSet result =statement.getGeneratedKeys();
+                if(result.next()) {
+                    empId = result.getInt(1);
+                }
+            }
+            list.add(new EmployeeData(empId,name,gender, basic_pay,startDate));
+            System.out.println(list);
+        }
+
+        catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+    }
 }

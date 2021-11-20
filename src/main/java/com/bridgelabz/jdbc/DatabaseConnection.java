@@ -4,9 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class EmployeePayrollDBService {
+public class DatabaseConnection {
 
-    public Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException {
         String jdbcURL = "jdbc:mysql://localhost:3306/payroll_services?useSSL=false";
         String userName = "root";
         String password = "Sumit123@Sumit@123";
